@@ -108,7 +108,7 @@
       margin: 40px 0;
     }
 
-    .cta a {
+    .cta a, .cta button {
       display: inline-block;
       background-color: var(--accent);
       color: white;
@@ -119,9 +119,11 @@
       text-decoration: none;
       transition: background-color 0.3s ease;
       animation: pulse 2s infinite;
+      border: none;
+      cursor: pointer;
     }
 
-    .cta a:hover {
+    .cta a:hover, .cta button:hover {
       background-color: #0056b3;
     }
 
@@ -150,7 +152,7 @@
         gap: 10px;
       }
 
-      .cta a {
+      .cta a, .cta button {
         width: 100%;
         padding: 12px;
       }
@@ -161,7 +163,9 @@
       70% { box-shadow: 0 0 0 10px rgba(0,123,255, 0); }
       100% { box-shadow: 0 0 0 0 rgba(0,123,255, 0); }
     }
-  </style>
+</style>
+
+
 </head>
 <body>
 
@@ -294,7 +298,7 @@ function startCheck() {
   setTimeout(function() {
     document.getElementById('loading').innerText = '✅ Проверка пройдена успешно!';
     setTimeout(function() {
-      window.location.href = "https://t.me/your_bot"; // сюда вставь своего бота
+      window.location.href = "https://t.me/your_bot"; // сюда вставь своего реального бота
     }, 1500);
   }, 2000);
 }
