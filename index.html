@@ -65,7 +65,7 @@ src="https://www.facebook.com/tr?id=713550937996335&ev=PageView&noscript=1"
   <section id="check" class="py-16 bg-blue-50">
     <div class="max-w-xl mx-auto text-center px-4 animate-[fadeInUp_1s_ease-out]">
       <h2 class="text-2xl font-semibold text-blue-800 mb-4">Проверка права на жильё</h2>
-      <input id="iin" type="text" placeholder="Введите ИИН или паспорт" class="w-full border px-4 py-3 rounded-xl mb-4 shadow" />
+      <input id="iin" type="text" placeholder="Введите ФИО полностью" class="w-full border px-4 py-3 rounded-xl mb-4 shadow" />
       <button onclick="checkIIN()" class="w-full bg-blue-700 text-white py-3 rounded-xl font-medium hover:bg-blue-800 transition">Проверить</button>
       <div id="iin-loader" class="text-center mt-4 hidden">
         <div class="w-12 h-12 border-4 border-blue-100 border-t-blue-700 rounded-full animate-spin mx-auto"></div>
@@ -165,7 +165,7 @@ src="https://www.facebook.com/tr?id=713550937996335&ev=PageView&noscript=1"
       const result = document.getElementById("iin-result");
 
       if (input.length < 7) {
-        alert("Введите корректный ИИН");
+        alert("Введите полный ФИО");
         return;
       }
 
