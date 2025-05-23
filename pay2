@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портал оплаты — Жильё 2025</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f5faff, #e2ecf7);
+      color: #222;
+    }
+    .container {
+      max-width: 520px;
+      margin: 40px auto;
+      padding: 2rem;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .logo {
+      width: 90px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 24px;
+      color: #0b5394;
+      margin: 0;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 400;
+      color: #555;
+      margin: 5px 0 25px;
+    }
+    .error-box {
+      background: #fff3f3;
+      border: 1px solid #f5c2c7;
+      padding: 20px;
+      border-radius: 8px;
+      color: #842029;
+      font-size: 15px;
+    }
+    .error-box h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #b02a37;
+    }
+    .contact {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .contact a {
+      color: #0b5394;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="IMG_6512.PNG" alt="Герб" class="logo">
+      <h1>Портал онлайн-оплаты</h1>
+      <h2>Государственная программа "Жильё 2025"</h2>
+    </header>
+
+    <div class="error-box">
+      <h3>⚠️ Техническая ошибка</h3>
+      <p>К сожалению, автоматическая система оплаты временно недоступна из-за высокой нагрузки.</p>
+      <p>Ваши данные были сохранены. Для завершения оплаты, пожалуйста, свяжитесь с уполномоченным менеджером.</p>
+    </div>
+
+    <div class="contact">
+      <p>👤 <a href="https://t.me/MyGov_Manager" target="_blank">@MyGov_Manager — Перейти в Telegram</a></p>
+    </div>
+  </div>
+</body>
+</html>
